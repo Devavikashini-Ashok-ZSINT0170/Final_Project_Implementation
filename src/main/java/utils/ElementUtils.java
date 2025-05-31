@@ -22,7 +22,6 @@ public class ElementUtils {
     }
 
     public void clickElement(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 
@@ -41,9 +40,13 @@ public class ElementUtils {
         }
     }
 
-    public void waitForPageLoad() {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(
-                webDriver -> ((JavascriptExecutor) webDriver)
-                        .executeScript("return document.readyState").equals("complete"));
+    public String getText(WebElement element) {
+        return element.getText().trim();
     }
+
+    public Alert waitForAlert(int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        return wait.until(ExpectedConditions.alertIsPresent());
+    }
+
 }

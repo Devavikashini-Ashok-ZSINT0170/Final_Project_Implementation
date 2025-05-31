@@ -21,8 +21,6 @@ public class DriverFactory {
         //Initializing the driver
         WebDriver driver;
 
-
-
         switch (browserName.toLowerCase()) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
