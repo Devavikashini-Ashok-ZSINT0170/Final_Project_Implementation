@@ -32,6 +32,7 @@ public class DriverFactory {
                 chromePrefs.put("plugins.always_open_pdf_externally", true); // auto-download PDF
                 chromeOptions.setExperimentalOption("prefs", chromePrefs);
 
+                chromeOptions.addArguments("--headless=new");
                 driver = new ChromeDriver(chromeOptions);
                 break;
 
@@ -45,6 +46,7 @@ public class DriverFactory {
                 profile.setPreference("pdfjs.disabled", true); // disable built-in viewer
                 profile.setPreference("dom.webnotifications.enabled", false);
                 firefoxOptions.setProfile(profile);
+                firefoxOptions.addArguments("--headless=new");
                 driver = new FirefoxDriver(firefoxOptions);
                 break;
 

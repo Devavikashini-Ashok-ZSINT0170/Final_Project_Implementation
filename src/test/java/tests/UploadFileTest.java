@@ -7,6 +7,8 @@ import pages.NavigationPage;
 import pages.UploadFilePage;
 import testbase.TestBase;
 
+import java.io.File;
+
 
 public class UploadFileTest extends TestBase {
 
@@ -24,7 +26,8 @@ public class UploadFileTest extends TestBase {
     @Test
     public void testFileUpload() {
 
-        String filePath = "C:\\Users\\devavikashini.ashok\\Downloads\\sample.pdf";
+        String filePath = new File("testfiles/sample.pdf").getAbsolutePath();
+        System.out.println("File path: " + filePath);
 
         uploadFilePage.uploadFile(filePath);
 
