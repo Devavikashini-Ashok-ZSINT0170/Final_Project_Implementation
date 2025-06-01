@@ -29,9 +29,25 @@ public class NavigationTest extends TestBase {
     }
 
     @Test
-    public void testNavigationToFramesPage() {
-        navigationPage.goToFramesPage();
-        Assert.assertTrue(driver.getCurrentUrl().contains("Frames.html"));
+    public void testNavigationToDynamicDataPage() {
+        navigationPage.goToDynamicPage();
+        Assert.assertTrue(driver.getCurrentUrl().contains("DynamicData.html"));
     }
+
+    public void testNavigationToDownloadPage() {
+        navigationPage.goToFileDownload();
+        Assert.assertTrue(driver.getCurrentUrl().contains("FileDownload.html"));
+    }
+
+    public void testNavigationToUploadPage() {
+        navigationPage.goToFileUpload();
+        Assert.assertTrue(driver.getCurrentUrl().contains("FileUpload.html"));
+    }
+
+    public void testNavigationToModalsPage() {
+        navigationPage.goToModalsPage();
+        Assert.assertTrue(driver.getCurrentUrl().contains("FileUpload.html"));
+    }
+
 
 }

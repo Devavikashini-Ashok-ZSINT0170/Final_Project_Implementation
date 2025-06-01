@@ -1,10 +1,10 @@
 package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.*;
-import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.edge.*;
+import org.openqa.selenium.firefox.*;
 
 import java.io.File;
 import java.time.Duration;
@@ -18,18 +18,20 @@ public class DriverFactory {
     private static final String DOWNLOAD_DIR = System.getProperty("user.dir") + File.separator + "downloads";
 
     public static WebDriver initDriver(String browserName) {
-        //Initializing the driver
         WebDriver driver;
 
         switch (browserName.toLowerCase()) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--disable-notifications", "--incognito");
+
                 Map<String, Object> chromePrefs = new HashMap<>();
                 chromePrefs.put("download.default_directory", DOWNLOAD_DIR);
                 chromePrefs.put("profile.default_content_setting_values.notifications", 2);
+                chromePrefs.put("download.prompt_for_download", false); // disable prompt
+                chromePrefs.put("plugins.always_open_pdf_externally", true); // auto-download PDF
                 chromeOptions.setExperimentalOption("prefs", chromePrefs);
+
                 driver = new ChromeDriver(chromeOptions);
                 break;
 
@@ -39,6 +41,8 @@ public class DriverFactory {
                 FirefoxProfile profile = new FirefoxProfile();
                 profile.setPreference("browser.download.dir", DOWNLOAD_DIR);
                 profile.setPreference("browser.download.folderList", 2);
+                profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf");
+                profile.setPreference("pdfjs.disabled", true); // disable built-in viewer
                 profile.setPreference("dom.webnotifications.enabled", false);
                 firefoxOptions.setProfile(profile);
                 driver = new FirefoxDriver(firefoxOptions);
@@ -51,6 +55,8 @@ public class DriverFactory {
                 Map<String, Object> edgePrefs = new HashMap<>();
                 edgePrefs.put("download.default_directory", DOWNLOAD_DIR);
                 edgePrefs.put("profile.default_content_setting_values.notifications", 2);
+                edgePrefs.put("download.prompt_for_download", false);
+                edgePrefs.put("plugins.always_open_pdf_externally", true);
                 edgeOptions.setExperimentalOption("prefs", edgePrefs);
                 driver = new EdgeDriver(edgeOptions);
                 break;
@@ -59,10 +65,9 @@ public class DriverFactory {
                 throw new RuntimeException("Unsupported browser: " + browserName);
         }
 
-
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        tlDriver.set(driver); // setting the browser for automation
+        tlDriver.set(driver);
         return getDriver();
     }
 
@@ -73,6 +78,9 @@ public class DriverFactory {
     public static void quitDriver() {
         getDriver().quit();
         tlDriver.remove();
-        // removing the thread 1 after running the testcase 1
+    }
+
+    public static String getDownloadDir() {
+        return DOWNLOAD_DIR;
     }
 }

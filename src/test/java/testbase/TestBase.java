@@ -10,7 +10,7 @@ public class TestBase {
 
     @Parameters({"browser"})
     @BeforeMethod
-    public void setUp(@Optional ("chrome") String browser){
+    public void setUp(@Optional("chrome") String browser) {
         driver = DriverFactory.initDriver(browser);
         driver.get("https://demo.automationtesting.in/Register.html");
 

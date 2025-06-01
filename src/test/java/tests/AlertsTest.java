@@ -25,7 +25,7 @@ public class AlertsTest extends TestBase {
 
 
     @Test
-    public void testAlertOkPage(){
+    public void testAlertOkPage() {
         navigationPage.goToAlertsPage();
         alertsPage.clickAlertWithOkTab();
         alertsPage.triggerSimpleAlert();
@@ -51,7 +51,7 @@ public class AlertsTest extends TestBase {
         String alertText = alert.getText();
         Assert.assertEquals(alertText, "Press a Button !");
 
-        alert.dismiss(); // or alert.accept(); depending on test scenario
+        alert.dismiss();
     }
 
     @Test
@@ -71,14 +71,8 @@ public class AlertsTest extends TestBase {
         alert.sendKeys(inputText);
         alert.accept();
 
-       Assert.assertTrue(alertsPage.getResultText().contains("Hello John Doe"));
+        Assert.assertTrue(alertsPage.getResultText().contains("Hello John Doe"));
     }
-
-
-
-
-
-
 
 
 }

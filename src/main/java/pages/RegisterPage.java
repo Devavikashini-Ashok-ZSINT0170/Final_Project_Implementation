@@ -23,7 +23,7 @@ public class RegisterPage extends ElementUtils {
     private WebElement enterAddress;
 
     @FindBy(xpath = "//input[@type='email']")
-    private  WebElement enterEmail;
+    private WebElement enterEmail;
 
     @FindBy(xpath = "//input[@type='tel']")
     private WebElement enterPhone;
@@ -51,7 +51,6 @@ public class RegisterPage extends ElementUtils {
 
     @FindBy(id = "submitbtn")
     private WebElement submitButton;
-
 
 
     public RegisterPage(WebDriver driver) {
@@ -100,7 +99,6 @@ public class RegisterPage extends ElementUtils {
         System.out.println("Country dropdown options count: " + optionsCount);
         return optionsCount > 1;  // More than 1 means options other than placeholder exist
     }
-
 
 
 }

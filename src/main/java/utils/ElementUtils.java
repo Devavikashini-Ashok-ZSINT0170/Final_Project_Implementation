@@ -49,4 +49,10 @@ public class ElementUtils {
         return wait.until(ExpectedConditions.alertIsPresent());
     }
 
+    public void waitForVisibility(WebElement element, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+
 }

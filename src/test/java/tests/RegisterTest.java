@@ -22,7 +22,6 @@ public class RegisterTest extends TestBase {
     }
 
 
-
     @Severity(SeverityLevel.NORMAL)
     @Test(description = "Register with valid details")
     public void registerUserTest() {

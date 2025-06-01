@@ -24,17 +24,20 @@ public class NavigationPage extends ElementUtils {
     @FindBy(xpath = "//a[@href='Windows.html']")
     private WebElement windowsLink;
 
-    @FindBy(xpath = "//a[text()='Frames']")
-    private WebElement framesLink;
-
     @FindBy(xpath = "//a[contains(text(), 'More')]")
     private WebElement moreLinks;
 
     @FindBy(xpath = "//a[text()='Modals']")
     private WebElement modalsLink;
 
-    @FindBy(xpath = "//a[text()='Upload and Download']")
-    private WebElement uploadDownloadLink;
+    @FindBy(xpath = "//a[@href='FileUpload.html']")
+    private WebElement uploadLink;
+
+    @FindBy(xpath = "//a[@href='FileDownload.html']")
+    private WebElement downloadLink;
+
+    @FindBy(xpath = "//a[@href='DynamicData.html']")
+    private WebElement dynamicLinks;
 
 
     // Navigation methods
@@ -48,13 +51,23 @@ public class NavigationPage extends ElementUtils {
         clickElement(windowsLink);
     }
 
-    public void goToFramesPage() {
-        clickElement(switchToMenu);
-        clickElement(framesLink);
+    public void goToDynamicPage() {
+        clickElement(moreLinks);
+        clickElement(dynamicLinks);
+    }
+
+    public void goToFileDownload() {
+        clickElement(moreLinks);
+        clickElement(downloadLink);
+    }
+
+    public void goToFileUpload() {
+        clickElement(moreLinks);
+        clickElement(uploadLink);
     }
 
     public void goToModalsPage() {
-        clickElement(switchToMenu);
+        clickElement(moreLinks);
         clickElement(modalsLink);
     }
 

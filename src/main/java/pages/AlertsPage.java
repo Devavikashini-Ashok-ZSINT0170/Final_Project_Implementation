@@ -41,7 +41,7 @@ public class AlertsPage extends ElementUtils {
     }
 
     public void clickAlertWithOkCancelTab() {
-      clickElement(alertWithOkCancelTab);
+        clickElement(alertWithOkCancelTab);
     }
 
     public void clickAlertWithTextboxTab() {

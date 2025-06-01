@@ -8,6 +8,11 @@
                 <class name="tests.RegisterTest"/>
                 <class name="tests.NavigationTest"/>
                 <class name="tests.AlertsTest"/>
+                <class name="tests.ModalsTest"/>
+                <class name="tests.DynamicTest"/>
+                <class name="tests.WindowsTest"/>
+                <class name="tests.DownloadFileTest"/>
+                <class name="tests.UploadFileTest"/>
             </classes>
         </parameter>
     </test>
@@ -17,6 +22,11 @@
                 <class name="tests.RegisterTest"/>
                 <class name="tests.NavigationTest"/>
                 <class name="tests.AlertsTest"/>
+                <class name="tests.ModalsTest"/>
+                <class name="tests.DynamicTest"/>
+                <class name="tests.WindowsTest"/>
+                <class name="tests.DownloadFileTest"/>
+                <class name="tests.UploadFileTest"/>
             </classes>
         </parameter>
     </test>
