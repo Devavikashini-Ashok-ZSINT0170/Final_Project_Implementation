@@ -14,16 +14,14 @@ import static org.testng.Assert.assertTrue;
 
 public class DownloadFileTest extends TestBase {
 
-    private Path downloadPath;
     NavigationPage navigationPage;
     DownloadFilePage downloadPage;
+    Path downloadPath = Paths.get("downloads").toAbsolutePath(); // Fix: Use Path instead of String
 
     @BeforeMethod
     public void setUp() {
-
         navigationPage = new NavigationPage(driver);
         downloadPage = new DownloadFilePage(driver);
-        downloadPath = Paths.get(System.getProperty("user.dir"), "downloads");
     }
 
     @Test
@@ -31,10 +29,7 @@ public class DownloadFileTest extends TestBase {
         navigationPage.goToFileDownload();
         downloadPage.clickDownloadPdfFile();
 
-
         File[] files = downloadPath.toFile().listFiles();
         assertTrue(files != null && files.length > 0, "Downloaded file not found.");
     }
-
-
 }
