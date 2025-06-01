@@ -3,7 +3,7 @@
 
 <suite name="TestNG Automation demo Test suite" parallel="tests" thread-count="2">
 
-    <test name="Chrome Test">
+    <test name="Cross Browser Testing">
         <parameter name="env" value="${env}" />
         <parameter name="browser" value="${browser}" />
         <parameter name="suite" value="${suite}" />
