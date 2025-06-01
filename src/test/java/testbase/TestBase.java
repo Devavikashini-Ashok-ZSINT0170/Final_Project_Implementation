@@ -8,7 +8,7 @@ public class TestBase {
 
     protected WebDriver driver;
 
-    @Parameters({"browser"})
+    @Parameters({"env", "browser", "suite"})
     @BeforeMethod
     public void setUp(@Optional("chrome") String browser) {
         driver = DriverFactory.initDriver(browser);
